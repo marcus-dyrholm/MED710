@@ -105,6 +105,14 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean SetDistance
+        {
+            get
+            {
+                return SteamVR_Actions.default_SetDistance;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get
