@@ -14,58 +14,99 @@ public class VelocityTesting : MonoBehaviour
     private GameObject hand;
     public Vector3 localVelocity;
     public float distance;
+    public float maxArmDistance;
+    public float minArmDistance;
+    public float distanceScalar;
     public float velocityRange;
     public float velocityNewRange;
 
+    public float distanceSpeed;
+
     private GameObject _player;
-    
+
     public SteamVR_Action_Boolean setdistance; //Grab Pinch is the trigger, select from inspecter
     public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.Any;//which controller
 
     private void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _player = GameObject.FindGameObjectWithTag("RightShoulder");
 
     }
 
     private void Update()
     {
-        distance = telekinesis.m_fDistance;
+        distance = Vector3.Distance(this.transform.position, _player.transform.position);
         //Debug.Log(distance);
 
         localVelocity = transform.InverseTransformDirection(this.GetComponent<HandPhysics>().handCollider.GetComponent<Rigidbody>().velocity);
-/*
-        if (telekinesis.m_ActiveObject!= null && localVelocity.z >1)
+        /*
+                if (telekinesis.m_ActiveObject!= null && localVelocity.z >1)
+                {
+                    //telekinesis.m_ActiveObject.GetComponent<Rigidbody>().AddForce(Vector3.forward);
+                    telekinesis.m_fDistance += 1;
+                    Debug.Log("throwing");
+                }
+        */
+
+        if (telekinesis.m_ActiveObject != null)
         {
-            //telekinesis.m_ActiveObject.GetComponent<Rigidbody>().AddForce(Vector3.forward);
-            telekinesis.m_fDistance += 1;
-            Debug.Log("throwing");
-        }
-*/
-        if (telekinesis.m_ActiveObject != null && telekinesis.m_fDistance >= 0)
-        {
-            telekinesis.m_fDistance += map(localVelocity.z, -velocityRange, velocityRange, -velocityNewRange, velocityNewRange );
+            if (telekinesis.m_fDistance >= 0 && distance < maxArmDistance && distance > minArmDistance)
+            {
+                telekinesis.m_fDistance += map(localVelocity.z, -velocityRange, velocityRange, -velocityNewRange, velocityNewRange);
+            }
+
+            if (distance >= maxArmDistance)
+            {
+                telekinesis.m_fDistance += distanceSpeed;
+                Debug.Log("aboveDistance");
+            }
+
+            if (distance <= minArmDistance && telekinesis.m_fDistance < 0)
+            {
+                telekinesis.m_fDistance -= distanceSpeed;
+            }
+
+            if (telekinesis.m_fDistance < 0)
+            {
+                telekinesis.m_fDistance -= map(localVelocity.z, -velocityRange, velocityRange, -velocityNewRange, velocityNewRange);
+            }
+
         }
 
-        if (telekinesis.m_ActiveObject != null && telekinesis.m_fDistance < 0)
+        if (SteamVR_Actions._default.SetDistance.GetStateDown(SteamVR_Input_Sources.Any))
         {
-            telekinesis.m_fDistance -= map(localVelocity.z, -velocityRange, velocityRange, -velocityNewRange, velocityNewRange );
+            distanceSet();
+        }
+        if (SteamVR_Actions._default.SetDistanceClose.GetStateDown(SteamVR_Input_Sources.Any))
+        {
+            distanceCloseSet();
         }
 
-        SteamVR_Input.actionsBoolean[1].GetStateDown(inputSource);
+
+
+
+
 
         //telekinesis.m_fDistance = map(localVelocity.z, -10, 10, -0.1f, 0.1f);
     }
 
     private void distanceSet()
     {
-        distance = Vector3.Distance(this.transform.position, _player.transform.position);
+        maxArmDistance = Vector3.Distance(this.transform.position, _player.transform.position);
+        Debug.Log(maxArmDistance);
+        maxArmDistance -= distanceScalar;
     }
-    
+
+    private void distanceCloseSet()
+    {
+        minArmDistance = Vector3.Distance(this.transform.position, _player.transform.position);
+        minArmDistance += distanceScalar;
+    }
+
     float map(float s, float a1, float a2, float b1, float b2)
     {
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
-    
-    
+
+
 }
