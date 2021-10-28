@@ -5,6 +5,7 @@ using UnityEngine;
 using Valve.VR.InteractionSystem;
 using Valve.VR;
 using UnityEngine.Events;
+using UnityEngine.Experimental.VFX;
 
 [System.Serializable]
 public class Telekinesis : MonoBehaviour
@@ -41,6 +42,7 @@ public class Telekinesis : MonoBehaviour
     private bool m_OriginalGravity;
     private Queue<Vector3> lastPositionQueue = new Queue<Vector3>();
     private float m_LastControllerAngle;
+    [SerializeField] private Transform arcStartPoint;
 
     private BezierCurveRenderer _line;
 
@@ -82,6 +84,11 @@ public class Telekinesis : MonoBehaviour
             //     _handDevice = _teleHand.controller;
             // }
 //                   localVelocity = transform.InverseTransformDirection(this.GetComponent<Rigidbody>().velocity); 
+        }
+
+        if (_telekinesisActive = true)
+        {
+            
         }
     }
 
