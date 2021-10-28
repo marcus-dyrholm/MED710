@@ -6,6 +6,8 @@ using Valve.VR.InteractionSystem;
 using Valve.VR;
 using UnityEngine.Events;
 using UnityEngine.Experimental.VFX;
+using UnityEngine.VFX;
+using UnityEngine.VFX.Utility;
 
 [System.Serializable]
 public class Telekinesis : MonoBehaviour
@@ -42,7 +44,17 @@ public class Telekinesis : MonoBehaviour
     private bool m_OriginalGravity;
     private Queue<Vector3> lastPositionQueue = new Queue<Vector3>();
     private float m_LastControllerAngle;
+    
+    //VFX control parameters
+    [SerializeField] private VisualEffect lightningArc;
     [SerializeField] private Transform arcStartPoint;
+    [SerializeField] private Transform arcEndPoint;
+    [SerializeField] private float objectMass;
+    [SerializeField] private float massScale = 10;
+    [SerializeField] private Vector3 tangentOffset = new Vector3 (-10.0f,-10.0f,-10.0f);
+    [SerializeField] private Vector3 tangentEnd;
+  
+    
 
     private BezierCurveRenderer _line;
 
@@ -86,9 +98,22 @@ public class Telekinesis : MonoBehaviour
 //                   localVelocity = transform.InverseTransformDirection(this.GetComponent<Rigidbody>().velocity); 
         }
 
-        if (_telekinesisActive = true)
+        if (_telekinesisActive == true)
         {
-            
+            tangentEnd = m_ActiveObject.transform.position - tangentOffset; 
+            arcEndPoint = m_ActiveObject.transform;
+            objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
+            lightningArc.gameObject.SetActive(true);
+            print(m_ActiveObject.transform);
+            lightningArc.SetVector3( Shader.PropertyToID("Target"), arcEndPoint.position );
+            tangentOffset = tangentOffset * (objectMass / massScale);
+            //lightningArc.SetVector3(Shader.PropertyToID("TangentEnd"), tangentEnd);
+               
+
+        }
+        else
+        {
+            lightningArc.gameObject.SetActive(false);
         }
     }
 
@@ -310,5 +335,7 @@ public class Telekinesis : MonoBehaviour
     public void ButtonTrigger(bool b){
         _trigger = b;
     }
+
+    
 
 }
