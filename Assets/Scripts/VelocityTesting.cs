@@ -21,6 +21,9 @@ public class VelocityTesting : MonoBehaviour
     public float velocityNewRange;
 
     public float distanceSpeed;
+    private float acv = 30;
+
+    private Vector3 velocity = Vector3.zero;
 
     private GameObject _player;
 
@@ -61,14 +64,19 @@ public class VelocityTesting : MonoBehaviour
                 Debug.Log("aboveDistance");
             }
 
-            if (distance <= minArmDistance && telekinesis.m_fDistance < 0)
+            if (distance <= minArmDistance && telekinesis.m_fDistance > 0)
             {
-                telekinesis.m_fDistance -= distanceSpeed;
+                telekinesis.m_ActiveObject.transform.position = Vector3.SmoothDamp(telekinesis.m_ActiveObject.transform.position, _player.transform.position, ref velocity, 2);
+                telekinesis.m_fDistance = Vector3.Distance(telekinesis.m_ActiveObject.transform.position, _player.transform.position); 
+                float newSpeed = telekinesis.m_fDistance * distanceSpeed;
+                Debug.Log("distance speed = " + newSpeed);
+                Debug.Log("Below Distance");
             }
 
-            if (telekinesis.m_fDistance < 0)
+            if (telekinesis.m_fDistance <= 0)
             {
-                telekinesis.m_fDistance -= map(localVelocity.z, -velocityRange, velocityRange, -velocityNewRange, velocityNewRange);
+                //telekinesis.m_fDistance -= map(localVelocity.z, -velocityRange, velocityRange, -velocityNewRange, velocityNewRange);
+                telekinesis.m_fDistance = 0;
             }
 
         }
@@ -93,14 +101,15 @@ public class VelocityTesting : MonoBehaviour
     private void distanceSet()
     {
         maxArmDistance = Vector3.Distance(this.transform.position, _player.transform.position);
-        Debug.Log(maxArmDistance);
         maxArmDistance -= distanceScalar;
+        Debug.Log("max arm distance = " + maxArmDistance);
     }
 
     private void distanceCloseSet()
     {
         minArmDistance = Vector3.Distance(this.transform.position, _player.transform.position);
         minArmDistance += distanceScalar;
+        Debug.Log("min arm distance = " + minArmDistance);
     }
 
     float map(float s, float a1, float a2, float b1, float b2)
