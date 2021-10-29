@@ -51,8 +51,8 @@ public class Telekinesis : MonoBehaviour
     [SerializeField] private Transform arcEndPoint;
     [SerializeField] private float objectMass;
     [SerializeField] private float massScale = 10;
-    [SerializeField] private Vector3 tangentOffset = new Vector3 (-10.0f,-10.0f,-10.0f);
-    [SerializeField] private Vector3 tangentEnd;
+    [SerializeField] private Vector3 offsetTangentPoint;
+    [SerializeField] private int offsetDistance = 5;
   
     
 
@@ -100,15 +100,17 @@ public class Telekinesis : MonoBehaviour
 
         if (_telekinesisActive == true)
         {
-            tangentEnd = m_ActiveObject.transform.position - tangentOffset; 
+           
             arcEndPoint = m_ActiveObject.transform;
+            offsetTangentPoint = -arcEndPoint.transform.forward * offsetDistance;
+            //tangentEnd = m_ActiveObject.transform.position - tangentOffset; 
             objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
             lightningArc.gameObject.SetActive(true);
-            print(m_ActiveObject.transform);
             lightningArc.SetVector3( Shader.PropertyToID("Target"), arcEndPoint.position );
-            tangentOffset = tangentOffset * (objectMass / massScale);
-            //lightningArc.SetVector3(Shader.PropertyToID("TangentEnd"), tangentEnd);
-               
+            lightningArc.SetVector3(Shader.PropertyToID("TangentEnd"), offsetTangentPoint);
+            Debug.Log(offsetTangentPoint);
+            Debug.Log(arcEndPoint);
+            Debug.Log(offsetTangentPoint-arcEndPoint.position);
 
         }
         else

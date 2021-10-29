@@ -408,6 +408,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 513832587}
     - target: {fileID: 114810233442803202, guid: 34cd893469686e04c8d3c65e887341f6, type: 3}
+      propertyPath: tangentEnd.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114810233442803202, guid: 34cd893469686e04c8d3c65e887341f6, type: 3}
       propertyPath: arcStartPoint
       value: 
       objectReference: {fileID: 1518834907}
