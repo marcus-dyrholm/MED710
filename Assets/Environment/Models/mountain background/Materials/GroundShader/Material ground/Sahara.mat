@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sahara
+  m_Shader: {fileID: -6465566751694194690, guid: a5c4d1765f18c4c4c95f8b6588c6b246, type: 3}
+  m_ShaderKeywords: _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses:
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_136124C7:
+        m_Texture: {fileID: 2800000, guid: aa7a295d35327c54b804e9969f13b411, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_1C78D884:
+        m_Texture: {fileID: 2800000, guid: 605ff8bb00517b74b943eeeca7299776, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_2984046:
+        m_Texture: {fileID: 2800000, guid: 56531d4b8b1a0ab4aaed083124f995ba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_2B53F282:
+        m_Texture: {fileID: 2800000, guid: aa7a295d35327c54b804e9969f13b411, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_45B77F75:
+        m_Texture: {fileID: 2800000, guid: 7b93575e171118044849250abb172b3d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8D2E8E65:
+        m_Texture: {fileID: 2800000, guid: 977b436398b845d4b860a4211aff468e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B5DEEFBA:
+        m_Texture: {fileID: 2800000, guid: 605ff8bb00517b74b943eeeca7299776, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C0E76281:
+        m_Texture: {fileID: 2800000, guid: aa7a295d35327c54b804e9969f13b411, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_CD87CE9A:
+        m_Texture: {fileID: 2800000, guid: 84f5bef71f12e4046a86860c1e4c7feb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_DB27CB7D:
+        m_Texture: {fileID: 2800000, guid: c16b5a69ca63a0649bae050ac598cd3e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_E4461CD0:
+        m_Texture: {fileID: 2800000, guid: bfd675cc0db1d4656b75dc6d6ba91142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_EEE8AA1B:
+        m_Texture: {fileID: 2800000, guid: 04794601ddb0066498fcdd415370c5b3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F1887F6C:
+        m_Texture: {fileID: 2800000, guid: aa7a295d35327c54b804e9969f13b411, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_12D0071: 1.84
+    - Vector1_1DC7A975: 0.5
+    - Vector1_33929FA3: 3.86
+    - Vector1_33E4C0C0: 5.1
+    - Vector1_46879481: 0.4
+    - Vector1_4C3F5EE4: 0.2
+    - Vector1_5857EFB5: 0
+    - Vector1_65D18AD4: 0
+    - Vector1_6B48CB5D: 3.9
+    - Vector1_6F228B9F: 0.99
+    - Vector1_6F713EDE: 0
+    - Vector1_7E919839: 0
+    - Vector1_8B82BE77: 11.32
+    - Vector1_9BCABA6B: 1
+    - Vector1_9DBEDAF3: 0.77
+    - Vector1_A52B6029: 3.16
+    - Vector1_A956083A: 0
+    - Vector1_B5118F36: 0
+    - Vector1_C32340FD: 7.4
+    - Vector1_CA5F9474: 0.664
+    - Vector1_E39A534E: 7.84
+    - Vector1_E65C78B4: 1.94
+    - Vector1_F355920: 500
+    - Vector1_F71930C2: 1
+    - _AddPrecomputedVelocity: 0
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 0
+    - _AlphaSrcBlend: 1
+    - _AlphaToMask: 0
+    - _AlphaToMaskInspectorValue: 0
+    - _BlendMode: 0
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _DepthOffsetEnable: 0
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 0
+    - _EnableBlendModePreserveSpecularLighting: 0
+    - _EnableFogOnTransparent: 1
+    - _OpaqueCullMode: 2
+    - _RayTracing: 0
+    - _ReceivesSSR: 1
+    - _ReceivesSSRTransparent: 0
+    - _RefractionModel: 0
+    - _RenderQueueType: 1
+    - _RequireSplitLighting: 0
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 8
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
+    - _SupportDecals: 0
+    - _SurfaceType: 0
+    - _TerrianSnowAmount: 1
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
+    - _TransparentSortPriority: 0
+    - _TransparentWritingMotionVec: 0
+    - _TransparentZWrite: 0
+    - _UseShadowThreshold: 0
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 4
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
+    m_Colors:
+    - Color_25F4AF96: {r: 0, g: 0, b: 0, a: 0}
+    - Vector3_790F6B31: {r: 0.1, g: 0.1, b: 0.06, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TerrianSnowGround: {r: 0.1, g: 0.1, b: 0.06, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &5997840290291982417
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 11
