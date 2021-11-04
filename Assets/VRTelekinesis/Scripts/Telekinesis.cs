@@ -44,17 +44,17 @@ public class Telekinesis : MonoBehaviour
     private bool m_OriginalGravity;
     private Queue<Vector3> lastPositionQueue = new Queue<Vector3>();
     private float m_LastControllerAngle;
-    
+
     //VFX control parameters
-    [SerializeField] private VisualEffect lightningArc;
+    [SerializeField] public VisualEffect[] lightningArc = new VisualEffect[4];
     [SerializeField] private Transform arcStartPoint;
     [SerializeField] private Transform arcEndPoint;
     [SerializeField] private float objectMass;
     [SerializeField] private float massScale = 10;
     [SerializeField] private Vector3 offsetTangentPoint;
-    
-  
-    
+
+
+
 
     private BezierCurveRenderer _line;
 
@@ -62,13 +62,13 @@ public class Telekinesis : MonoBehaviour
     private float m_ThrowForce = .15f;
 
 
-    public event Action<TelekinesisObject> OnAttach;             
-    public event Action<TelekinesisObject> OnDetach;            
+    public event Action<TelekinesisObject> OnAttach;
+    public event Action<TelekinesisObject> OnDetach;
     public BoolEvent _activeStatus;
 
-    [SerializeField]bool _trigger;
+    [SerializeField] bool _trigger;
     public Vector3 localVelocity;
-    
+
 
 
     void Start()
@@ -95,24 +95,29 @@ public class Telekinesis : MonoBehaviour
             // {
             //     _handDevice = _teleHand.controller;
             // }
-//                   localVelocity = transform.InverseTransformDirection(this.GetComponent<Rigidbody>().velocity); 
+            //                   localVelocity = transform.InverseTransformDirection(this.GetComponent<Rigidbody>().velocity); 
         }
 
         if (_telekinesisActive == true)
         {
-           
+
             arcEndPoint = m_ActiveObject.transform;
             objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
-            offsetTangentPoint = arcStartPoint.transform.position + (arcStartPoint.transform.forward * Vector3.Distance(m_ActiveObject.transform.position,arcStartPoint.transform.position)) / (objectMass/m_FollowSpeed);
+            offsetTangentPoint = arcStartPoint.transform.position + (arcStartPoint.transform.forward * Vector3.Distance(m_ActiveObject.transform.position, arcStartPoint.transform.position)) / (objectMass / m_FollowSpeed);
             Debug.Log(offsetTangentPoint);
-            lightningArc.gameObject.SetActive(true);
-            lightningArc.SetVector3( Shader.PropertyToID("Target"), arcEndPoint.position );
-            lightningArc.SetVector3(Shader.PropertyToID("TangentEnd"), offsetTangentPoint); 
-
+            for (int i = 0; i < lightningArc.Length; i++)
+            {
+                lightningArc[i].gameObject.SetActive(true);
+                lightningArc[i].SetVector3(Shader.PropertyToID("Target"), arcEndPoint.position);
+                lightningArc[i].SetVector3(Shader.PropertyToID("TangentEnd"), offsetTangentPoint);
+            }
         }
         else
         {
-            lightningArc.gameObject.SetActive(false);
+            for (int i = 0; i < lightningArc.Length; i++)
+            {
+                lightningArc[i].gameObject.SetActive(false);
+            }
         }
     }
 
@@ -157,7 +162,7 @@ public class Telekinesis : MonoBehaviour
             float travelDistance = Vector3.Distance(targetPos, m_ActiveObject.transform.position);
             rigidBody.drag = Remap(Mathf.Min(travelDistance, .1f), m_InitialDrag, 5, 5, m_InitialDrag);
             rigidBody.AddForce((targetPos - m_ActiveObject.transform.position) * (travelDistance * m_FollowSpeed) * _additionalForce);
-            
+
 
 
             if (!_trigger && !Input.GetMouseButton(0))
@@ -270,7 +275,7 @@ public class Telekinesis : MonoBehaviour
                 rigidBody.useGravity = false;
                 rigidBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                
+
                 m_fDistance = Vector3.Distance(m_ActiveObject.transform.position, transform.position);
             }
 
@@ -331,10 +336,11 @@ public class Telekinesis : MonoBehaviour
         }
     }
 
-    public void ButtonTrigger(bool b){
+    public void ButtonTrigger(bool b)
+    {
         _trigger = b;
     }
 
-    
+
 
 }
