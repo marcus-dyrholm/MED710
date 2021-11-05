@@ -29,10 +29,10 @@
 #define EMS_BLUETOOTH_ID "EMS99TD"
 
 //setup for accepting commands also via USB (accepts USB commands if ACCEPT_USB_COMMANDS is 1)
-#define ACCEPT_USB_COMMANDS 0
+#define ACCEPT_USB_COMMANDS 1
 
 //setup the Bluetooth module. This is necessary if the toolkit is programmed the first time or if Bluetooth parameter are changed
-#define SETUP_BLUETOOTH 1
+#define SETUP_BLUETOOTH 0
 
 //Initialization of control objects
 AltSoftSerial softSerial;
@@ -127,10 +127,10 @@ void loop() {
 	if (ACCEPT_USB_COMMANDS) {
 		if (Serial.available() > 0) {
 
-			/* Uncomment the lines below, if you like to send command via USB to the Toolkit
-			 * String command = Serial.readStringUntil('\n');
-			 * emsSystem.doCommand(&command);
-			 */
+			 //Uncomment the lines below, if you like to send command via USB to the Toolkit
+			  String command = Serial.readStringUntil('\n');
+			  emsSystem.doCommand(&command);
+			 
 
 			char c = Serial.read();
 			debug_Toolkit(c);

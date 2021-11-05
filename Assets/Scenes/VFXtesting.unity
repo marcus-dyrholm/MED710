@@ -400,6 +400,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114810233442803202, guid: 34cd893469686e04c8d3c65e887341f6, type: 3}
+      propertyPath: EMS
+      value: 
+      objectReference: {fileID: 631763647}
+    - target: {fileID: 114810233442803202, guid: 34cd893469686e04c8d3c65e887341f6, type: 3}
       propertyPath: _teleHand
       value: 
       objectReference: {fileID: 2036677279}
@@ -415,6 +419,10 @@ PrefabInstance:
       propertyPath: arcStartPoint
       value: 
       objectReference: {fileID: 1518834907}
+    - target: {fileID: 114810233442803202, guid: 34cd893469686e04c8d3c65e887341f6, type: 3}
+      propertyPath: _telekinesisActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114810233442803202, guid: 34cd893469686e04c8d3c65e887341f6, type: 3}
       propertyPath: lightningArc.Array.data[0]
       value: 
@@ -467,6 +475,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4209682888592346, guid: 34cd893469686e04c8d3c65e887341f6, type: 3}
   m_PrefabInstance: {fileID: 631763642}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &631763647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631763643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10102d6a7757ace4895b6833615cff02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM4
 --- !u!1 &765972210
 GameObject:
   m_ObjectHideFlags: 0

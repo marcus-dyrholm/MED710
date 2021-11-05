@@ -44,6 +44,7 @@ public class Telekinesis : MonoBehaviour
     private bool m_OriginalGravity;
     private Queue<Vector3> lastPositionQueue = new Queue<Vector3>();
     private float m_LastControllerAngle;
+    public EMSScript EMS;
 
     //VFX control parameters
     [SerializeField] public VisualEffect[] lightningArc = new VisualEffect[4];
@@ -100,6 +101,7 @@ public class Telekinesis : MonoBehaviour
 
         if (_telekinesisActive == true)
         {
+            EMS.sendMessage("C0I50T20000000G");
 
             arcEndPoint = m_ActiveObject.transform;
             objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
