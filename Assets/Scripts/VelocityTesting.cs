@@ -69,8 +69,6 @@ public class VelocityTesting : MonoBehaviour
                 telekinesis.m_ActiveObject.transform.position = Vector3.SmoothDamp(telekinesis.m_ActiveObject.transform.position, _player.transform.position, ref velocity, 2);
                 telekinesis.m_fDistance = Vector3.Distance(telekinesis.m_ActiveObject.transform.position, _player.transform.position); 
                 float newSpeed = telekinesis.m_fDistance * distanceSpeed;
-                Debug.Log("distance speed = " + newSpeed);
-                Debug.Log("Below Distance");
             }
 
             if (telekinesis.m_fDistance <= 0)

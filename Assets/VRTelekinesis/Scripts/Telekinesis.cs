@@ -70,6 +70,8 @@ public class Telekinesis : MonoBehaviour
     [SerializeField] bool _trigger;
     public Vector3 localVelocity;
 
+    public Vector3 force;
+
 
 
     void Start()
@@ -86,6 +88,7 @@ public class Telekinesis : MonoBehaviour
         }
     }
 
+public GameObject trackingObject;
     void Update()
     {
         if (_teleHand != null)
@@ -101,12 +104,17 @@ public class Telekinesis : MonoBehaviour
 
         if (_telekinesisActive == true)
         {
-            EMS.sendMessage("C0I50T20000000G");
+            //EMS.sendMessage("C0I50T100G");
 
             arcEndPoint = m_ActiveObject.transform;
-            objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
+            if(m_ActiveObject.transform.childCount != 0)
+                objectMass = m_ActiveObject.GetComponentInChildren<Rigidbody>().mass;
+            else
+                objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
+
             offsetTangentPoint = arcStartPoint.transform.position + (arcStartPoint.transform.forward * Vector3.Distance(m_ActiveObject.transform.position, arcStartPoint.transform.position)) / (objectMass / m_FollowSpeed);
-            Debug.Log(offsetTangentPoint);
+
+            trackingObject.transform.position = offsetTangentPoint;
             for (int i = 0; i < lightningArc.Length; i++)
             {
                 lightningArc[i].gameObject.SetActive(true);
@@ -164,6 +172,8 @@ public class Telekinesis : MonoBehaviour
             float travelDistance = Vector3.Distance(targetPos, m_ActiveObject.transform.position);
             rigidBody.drag = Remap(Mathf.Min(travelDistance, .1f), m_InitialDrag, 5, 5, m_InitialDrag);
             rigidBody.AddForce((targetPos - m_ActiveObject.transform.position) * (travelDistance * m_FollowSpeed) * _additionalForce);
+            force = (targetPos - m_ActiveObject.transform.position) * (travelDistance * m_FollowSpeed) * _additionalForce;
+            
 
 
 

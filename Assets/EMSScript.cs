@@ -53,6 +53,7 @@ public class EMSScript : MonoBehaviour
         }
         sp.Write(message);
         //print(System.BitConverter.ToString(message));
+        Debug.Log("Message to EMS: " + message);
         return true;
     }
 
