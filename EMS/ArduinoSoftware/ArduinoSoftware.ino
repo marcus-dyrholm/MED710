@@ -137,7 +137,7 @@ void loop() {
 
 		}
 	}
-
+  Serial.setTimeout(25);
 }
 
 //Convert-functions for HEX-Strings "4D"->"M"
