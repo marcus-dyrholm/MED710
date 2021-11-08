@@ -25,7 +25,7 @@ public class EMSScript : MonoBehaviour
         EMSScript.port = new SerialPort();
         EMSScript.port.PortName = portName;
         EMSScript.port.BaudRate = 115200;
-        EMSScript.port.ReadTimeout = 101;
+        EMSScript.port.ReadTimeout = 20;
         EMSScript.port.Parity = Parity.None;
         EMSScript.port.DataBits = 8;
         EMSScript.port.StopBits = StopBits.Two;

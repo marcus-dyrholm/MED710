@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openEMSstim: {fileID: 765266670}
-  command_to_stimulate_this_player: C1I100T1000G
+  command_to_stimulate_this_player: C1I50T1000G
 --- !u!4 &218032843
 Transform:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10102d6a7757ace4895b6833615cff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM5
+  portName: COM4
 --- !u!4 &765266671
 Transform:
   m_ObjectHideFlags: 0
