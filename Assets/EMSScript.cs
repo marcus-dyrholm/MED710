@@ -57,4 +57,18 @@ public class EMSScript : MonoBehaviour
         return true;
     }
 
+    public void message(string message)
+    {
+        float time = Time.deltaTime;
+        float timeOut = 0.05f;
+
+        if(time >= timeOut)
+        {
+            sendMessage(message);
+        }
+
+
+        
+    }
+
 }

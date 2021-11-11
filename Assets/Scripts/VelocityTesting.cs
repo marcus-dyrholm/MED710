@@ -61,7 +61,7 @@ public class VelocityTesting : MonoBehaviour
             if (distance >= maxArmDistance)
             {
                 telekinesis.m_fDistance += distanceSpeed;
-                Debug.Log("aboveDistance");
+                //Debug.Log("aboveDistance");
             }
 
             if (distance <= minArmDistance && telekinesis.m_fDistance > 0)
