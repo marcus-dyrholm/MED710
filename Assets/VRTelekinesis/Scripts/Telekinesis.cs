@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -108,10 +108,14 @@ public GameObject trackingObject;
 
             arcEndPoint = m_ActiveObject.transform;
             if(m_ActiveObject.transform.childCount != 0)
+            {
                 objectMass = m_ActiveObject.GetComponentInChildren<Rigidbody>().mass;
-            else
                 objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
-
+            }
+            else
+            {
+                objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
+            }
             offsetTangentPoint = arcStartPoint.transform.position + (arcStartPoint.transform.forward * Vector3.Distance(m_ActiveObject.transform.position, arcStartPoint.transform.position)) / (objectMass / m_FollowSpeed);
 
             trackingObject.transform.position = offsetTangentPoint;
@@ -133,8 +137,10 @@ public GameObject trackingObject;
 
     public void OnTelekinesis()
     {
+        
         if (_telekinesisActive)
         {
+             
             _activeStatus.Invoke(true);
             if (_line != null && m_ActiveObject != null)
             {
@@ -158,6 +164,8 @@ public GameObject trackingObject;
 
             if (m_ActiveObject != null)
             {
+                MeshRenderer lightningMat = m_ActiveObject.GetComponent<MeshRenderer>();
+                lightningMat.material.SetFloat(Shader.PropertyToID("Width"),0.5f);  
 
                 m_MagicBeamPoints[0] = transform.position;
                 m_MagicBeamPoints[1] = transform.position + (transform.forward * Vector3.Distance(m_ActiveObject.transform.position, transform.position) / 2);
