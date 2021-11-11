@@ -96,12 +96,12 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.07432639
+  - screenRelativeHeight: 0.04884706
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 197313306604525890}
     - renderer: {fileID: 8197523659765571817}
-  - screenRelativeHeight: 0.0043830927
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4260419197866301481}
@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 7b24d33d6590bb8458e26549a3777985, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b24d33d6590bb8458e26549a3777985, type: 3}

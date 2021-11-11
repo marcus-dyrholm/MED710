@@ -95,8 +95,8 @@ Material:
     - _PlantsGrowSpeed: 0
     - _PlantsSnowAmount: 0
     - _WeetnesPlants: 0
-    - _WindDensity: 0.5
-    - _WindStrength: 4
+    - _WindDensity: 1
+    - _WindStrength: 1
     m_Colors:
     - Color_64D66B68: {r: 0.1009804, g: 0.02058824, b: 0.001470588, a: 0}
     - Color_A39DE4B0: {r: 0.1455144, g: 0.17435977, b: 0.28301886, a: 0}
@@ -108,5 +108,5 @@ Material:
     - Vector2_ae037a9e0c31413f9c12dcfbbb78ed55_1: {r: 1, g: 1, b: 1, a: 0}
     - Vector3_C5319667: {r: 4.36, g: 43.43, b: 1.05, a: -113.19}
     - _SnowDirectionPlants: {r: 0, g: 0, b: 0, a: 0}
-    - _WindMovement: {r: 0, g: 0, b: 0, a: 0.05}
+    - _WindMovement: {r: 0.5, g: 0.5, b: 0.5, a: 0.05}
   m_BuildTextureStacks: []
