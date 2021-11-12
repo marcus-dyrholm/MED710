@@ -48,8 +48,8 @@ public class Telekinesis : MonoBehaviour
 
     //VFX control parameters
     [SerializeField] public VisualEffect[] lightningArc = new VisualEffect[4];
-    [SerializeField] private Transform arcStartPoint;
-    [SerializeField] private Transform arcEndPoint;
+    [SerializeField] private Vector3 arcStartPoint;
+    [SerializeField] private Vector3 arcEndPoint;
     [SerializeField] private float objectMass;
     [SerializeField] private float massScale = 10;
     [SerializeField] private Vector3 offsetTangentPoint;
@@ -72,6 +72,10 @@ public class Telekinesis : MonoBehaviour
 
     public Vector3 force;
 
+    MeshRenderer lightningMat;
+
+    GameObject lastActiveObject;
+
 
 
     void Start()
@@ -88,9 +92,12 @@ public class Telekinesis : MonoBehaviour
         }
     }
 
-public GameObject trackingObject;
+    public GameObject trackingObject;
     void Update()
     {
+
+
+
         if (_teleHand != null)
         {
             transform.position = _teleHand.transform.position;
@@ -106,8 +113,8 @@ public GameObject trackingObject;
         {
             //EMS.sendMessage("C0I50T100G");
 
-            arcEndPoint = m_ActiveObject.transform;
-            if(m_ActiveObject.transform.childCount != 0)
+            arcEndPoint = m_ActiveObject.transform.position;
+            if (m_ActiveObject.transform.childCount != 0)
             {
                 objectMass = m_ActiveObject.GetComponentInChildren<Rigidbody>().mass;
                 objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
@@ -116,13 +123,14 @@ public GameObject trackingObject;
             {
                 objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
             }
-            offsetTangentPoint = arcStartPoint.transform.position + (arcStartPoint.transform.forward * Vector3.Distance(m_ActiveObject.transform.position, arcStartPoint.transform.position)) / (objectMass / m_FollowSpeed);
+            //offsetTangentPoint = arcStartPoint.transform.position + (arcStartPoint.transform.forward * Vector3.Distance(m_ActiveObject.transform.position, arcStartPoint.transform.position)) / (objectMass / m_FollowSpeed);
+            offsetTangentPoint = transform.position - (transform.forward * Vector3.Distance(m_ActiveObject.transform.position, transform.position)*m_FollowSpeed);
 
             trackingObject.transform.position = offsetTangentPoint;
             for (int i = 0; i < lightningArc.Length; i++)
             {
                 lightningArc[i].gameObject.SetActive(true);
-                lightningArc[i].SetVector3(Shader.PropertyToID("Target"), arcEndPoint.position);
+                lightningArc[i].SetVector3(Shader.PropertyToID("Target"), arcEndPoint);
                 lightningArc[i].SetVector3(Shader.PropertyToID("TangentEnd"), offsetTangentPoint);
             }
         }
@@ -137,10 +145,10 @@ public GameObject trackingObject;
 
     public void OnTelekinesis()
     {
-        
+
         if (_telekinesisActive)
         {
-             
+
             _activeStatus.Invoke(true);
             if (_line != null && m_ActiveObject != null)
             {
@@ -164,14 +172,21 @@ public GameObject trackingObject;
 
             if (m_ActiveObject != null)
             {
-                MeshRenderer lightningMat = m_ActiveObject.GetComponent<MeshRenderer>();
-                lightningMat.material.SetFloat(Shader.PropertyToID("Width"),0.5f);  
+                lastActiveObject = m_ActiveObject.gameObject;
+
+                lightningMat = lastActiveObject.GetComponent<MeshRenderer>();
+                lightningMat.material.SetFloat(Shader.PropertyToID("Width"), 0.5f);
 
                 m_MagicBeamPoints[0] = transform.position;
                 m_MagicBeamPoints[1] = transform.position + (transform.forward * Vector3.Distance(m_ActiveObject.transform.position, transform.position) / 2);
                 m_MagicBeamPoints[2] = m_ActiveObject.transform.position;
 
                 Vector3[] Curve = QuadraticBezierCurve(m_MagicBeamPoints[0], m_MagicBeamPoints[1], m_MagicBeamPoints[2], m_PathParticleCount);
+            }
+            else
+            {
+                lightningMat = m_ActiveObject.GetComponent<MeshRenderer>();
+                lightningMat.material.SetFloat(Shader.PropertyToID("Width"), 0.0f);
             }
 
 
@@ -181,7 +196,7 @@ public GameObject trackingObject;
             rigidBody.drag = Remap(Mathf.Min(travelDistance, .1f), m_InitialDrag, 5, 5, m_InitialDrag);
             rigidBody.AddForce((targetPos - m_ActiveObject.transform.position) * (travelDistance * m_FollowSpeed) * _additionalForce);
             force = (targetPos - m_ActiveObject.transform.position) * (travelDistance * m_FollowSpeed) * _additionalForce;
-            
+
 
 
 

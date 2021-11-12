@@ -12,8 +12,13 @@ public class EMSMessage : MonoBehaviour
     public string command_to_stimulate_this_player = "C0I100T1000G";
     private string message_to_stimulate_this_player;
 
-    float time;
-    float timeOut = 0.05f;
+    float time1;
+    float timeOut = 0.050f;
+
+    float time2;
+
+    bool channel1Sent, channel2Sent =false;
+
 
 
 
@@ -29,32 +34,29 @@ public class EMSMessage : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        time += Time.deltaTime;
-        if (time >= timeOut)
+        time1 += Time.deltaTime;
+        if (telekinesisRight.m_ActiveObject != null)
         {
+            int intensity = Mathf.RoundToInt(map(telekinesisRight.force.y, -200f, 800f, 0, 100));
+            Mathf.Clamp(intensity, 0, 100);
 
-            if (telekinesisRight.m_ActiveObject != null)
+            if (time1 >= 0.025f && !channel1Sent)
             {
-                int intensity = Mathf.RoundToInt(map(telekinesisRight.force.y, -200f, 800f, 0, 100));
-                Mathf.Clamp(intensity, 0, 100);
-
-                //if (intensity >= 0 && intensity <= 100)
-
-                EMSScript.sendMessage("C1I" + intensity + "T50G");
-
-                //Debug.Log("C1I"+intensity+"T50G");
-
-                //Debug.Log("intensity = " + intensity);
+                  EMSScript.sendMessage("C0I" + intensity + "T100G");
+                  channel1Sent = true;
             }
-
-            else
+            else if (time1 >= timeOut)
             {
-                //EMSScript.sendMessage("C1I01T50G");
+                EMSScript.sendMessage("C1I" + intensity + "T100G");
+                time1 = 0;
+                channel1Sent = false;
+                
             }
-            time = 0;
+            
         }
+
 
     }
 
