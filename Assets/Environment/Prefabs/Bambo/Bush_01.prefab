@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5853a070a633ffd4cbb9507fac962c7b, type: 2}
     - target: {fileID: -4249876281843478784, guid: b75e331c16b1d094692ffdc1afe41612, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967294
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b75e331c16b1d094692ffdc1afe41612, type: 3}
       propertyPath: m_RootOrder
@@ -21,15 +21,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b75e331c16b1d094692ffdc1afe41612, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b75e331c16b1d094692ffdc1afe41612, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b75e331c16b1d094692ffdc1afe41612, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b75e331c16b1d094692ffdc1afe41612, type: 3}
       propertyPath: m_LocalPosition.x
