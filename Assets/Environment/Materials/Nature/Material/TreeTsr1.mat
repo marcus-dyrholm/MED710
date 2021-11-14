@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: b5d24e5d18da1d44da10073800162d29, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -68,7 +68,7 @@ Material:
     - Vector1_1: 5.84
     - Vector1_13ED8FD2: 0
     - Vector1_1D509081: 10
-    - Vector1_22FC2C6A: 1
+    - Vector1_22FC2C6A: 0.5
     - Vector1_2598E898: 0.5
     - Vector1_29A12972: 500.81
     - Vector1_2A3E3049: 0
@@ -77,7 +77,7 @@ Material:
     - Vector1_3b3f0e1c5b924b85879308cc1ba8fc3b: 0.01
     - Vector1_5E32D086: 0
     - Vector1_77E83F2A: 0.9
-    - Vector1_7E4AE9C7: 0.5
+    - Vector1_7E4AE9C7: 0.2
     - Vector1_88DF1315: 0.5
     - Vector1_922393F6: 50
     - Vector1_BB67D10B: 0
@@ -87,10 +87,10 @@ Material:
     - Vector1_CE2BA687: 0
     - Vector1_D61CA389: 0
     - Vector1_D8593B06: 0.5
-    - Vector1_D9BC6EDD: 1
+    - Vector1_D9BC6EDD: 0.5
     - Vector1_E4A983AF: 0
     - Vector1_F3EA3A: 0
-    - Vector1_FF4BE5B1: 0
+    - Vector1_FF4BE5B1: 0.1
     - _AtumConverter: 0.931
     - _PlantsGrowSpeed: 0
     - _PlantsSnowAmount: 0
