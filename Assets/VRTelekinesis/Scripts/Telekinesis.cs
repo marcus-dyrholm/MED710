@@ -26,7 +26,7 @@ public class Telekinesis : MonoBehaviour
 
     public float _additionalForce = 1;
 
-    private bool m_AllowRotate = true;
+    private bool m_AllowRotate = false;
     public float _rotateSpeed;
     private float finalRot;
     public Hand _teleHand;
@@ -50,9 +50,8 @@ public class Telekinesis : MonoBehaviour
     [SerializeField] public VisualEffect[] lightningArc = new VisualEffect[4];
     [SerializeField] private Vector3 arcStartPoint;
     [SerializeField] private Vector3 arcEndPoint;
-    [SerializeField] private float objectMass;
-    [SerializeField] private float massScale = 10;
-    [SerializeField] private Vector3 offsetTangentPoint;
+    [SerializeField] public Vector3 offsetTangentPoint;
+    
 
 
 
@@ -114,22 +113,15 @@ public class Telekinesis : MonoBehaviour
             //EMS.sendMessage("C0I50T100G");
 
             arcEndPoint = m_ActiveObject.transform.position;
-            if (m_ActiveObject.transform.childCount != 0)
-            {
-                objectMass = m_ActiveObject.GetComponentInChildren<Rigidbody>().mass;
-                objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
-            }
-            else
-            {
-                objectMass = m_ActiveObject.GetComponent<Rigidbody>().mass;
-            }
-            //offsetTangentPoint = arcStartPoint.transform.position + (arcStartPoint.transform.forward * Vector3.Distance(m_ActiveObject.transform.position, arcStartPoint.transform.position)) / (objectMass / m_FollowSpeed);
-            offsetTangentPoint = transform.position - (transform.forward * Vector3.Distance(m_ActiveObject.transform.position, transform.position)*m_FollowSpeed);
 
-            trackingObject.transform.position = offsetTangentPoint;
+            arcStartPoint = this.transform.position;
+
+            offsetTangentPoint = transform.position + (transform.forward * Vector3.Distance(m_ActiveObject.transform.position, transform.position) / 2);
+    
             for (int i = 0; i < lightningArc.Length; i++)
             {
                 lightningArc[i].gameObject.SetActive(true);
+                 lightningArc[i].SetVector3(Shader.PropertyToID("Start"), arcStartPoint);
                 lightningArc[i].SetVector3(Shader.PropertyToID("Target"), arcEndPoint);
                 lightningArc[i].SetVector3(Shader.PropertyToID("TangentEnd"), offsetTangentPoint);
             }
@@ -196,6 +188,10 @@ public class Telekinesis : MonoBehaviour
             rigidBody.drag = Remap(Mathf.Min(travelDistance, .1f), m_InitialDrag, 5, 5, m_InitialDrag);
             rigidBody.AddForce((targetPos - m_ActiveObject.transform.position) * (travelDistance * m_FollowSpeed) * _additionalForce);
             force = (targetPos - m_ActiveObject.transform.position) * (travelDistance * m_FollowSpeed) * _additionalForce;
+            //Debug.Log(Cross(targetPos - m_ActiveObject.transform.position));
+
+            Vector3 inverseTransform = this.transform.InverseTransformDirection(force);
+            //Debug.Log(inverseTransform);
 
 
 

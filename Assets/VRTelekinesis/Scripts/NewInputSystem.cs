@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -94,7 +94,7 @@ namespace Valve.VR
         {
             if (_trigger)
             {
-                _onTriggerPress.Invoke();
+                 _onTriggerPress.Invoke();
 
             }
             else

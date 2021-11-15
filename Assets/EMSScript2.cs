@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
 
-public class EMSScript : MonoBehaviour
+public class EMSScript2 : MonoBehaviour
 {
 
     private static SerialPort port;
@@ -22,30 +22,30 @@ public class EMSScript : MonoBehaviour
 
     protected void init()
     {
-        EMSScript.port = new SerialPort();
-        EMSScript.port.PortName = portName;
-        EMSScript.port.BaudRate = 115200;
-        EMSScript.port.ReadTimeout = 20;
-        EMSScript.port.Parity = Parity.None;
-        EMSScript.port.DataBits = 8;
-        EMSScript.port.StopBits = StopBits.Two;
-        EMSScript.port.Open();
+        EMSScript2.port = new SerialPort();
+        EMSScript2.port.PortName = portName;
+        EMSScript2.port.BaudRate = 115200;
+        EMSScript2.port.ReadTimeout = 20;
+        EMSScript2.port.Parity = Parity.None;
+        EMSScript2.port.DataBits = 8;
+        EMSScript2.port.StopBits = StopBits.Two;
+        EMSScript2.port.Open();
         //print("Opening Serial Port: " + PortName);
     }
     
     protected void close()
     {
-        if (EMSScript.port != null)
+        if (EMSScript2.port != null)
         {
-            EMSScript.port.Close();
-            EMSScript.port.Dispose();
+            EMSScript2.port.Close();
+            EMSScript2.port.Dispose();
             //print("Closed Serial Port " + RehaStimInterface.Port.PortName);
-            EMSScript.port = null;
+            EMSScript2.port = null;
         }
     }
     public bool sendMessage(string message)
     {
-        SerialPort sp = EMSScript.port;
+        SerialPort sp = EMSScript2.port;
         if (sp == null || !sp.IsOpen)
         {
             //print ("Error: Serial Port not open");
@@ -53,7 +53,7 @@ public class EMSScript : MonoBehaviour
         }
         sp.Write(message);
         //print(System.BitConverter.ToString(message));
-        Debug.Log("Com port" + EMSScript.port.PortName + "Message to EMS: " + message);
+        Debug.Log("Com port" + EMSScript2.port.PortName + "Message to EMS: " + message);
         return true;
     }
 
