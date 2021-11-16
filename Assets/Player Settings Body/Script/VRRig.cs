@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+// https://www.youtube.com/watch?v=tBYl-aSxUe0&t=1s&ab_channel=Valem 11:33 To Connect to VR
 [System.Serializable]
 public class VRMap //New class
 {
@@ -21,6 +21,8 @@ public class VRMap //New class
 
 public class VRRig : MonoBehaviour
 {
+    [SerializeField]
+    private float turnSmoothness = 5;
     public VRMap head;
     public VRMap leftHand;
     public VRMap rightHand;
@@ -40,6 +42,8 @@ public class VRRig : MonoBehaviour
         //Position
         transform.position = headConstrainst.position + headBodyOffset;
         //Rotation
+        transform.forward = Vector3.Lerp(transform.forward,
+            Vector3.ProjectOnPlane(headConstrainst.up, Vector3.up).normalized,Time.deltaTime* turnSmoothness);
         transform.forward = Vector3.ProjectOnPlane(headConstrainst.up, Vector3.up).normalized;
 
         head.Map();
