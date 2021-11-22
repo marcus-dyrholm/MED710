@@ -51,7 +51,7 @@ public class Telekinesis : MonoBehaviour
     [SerializeField] private Vector3 arcStartPoint;
     [SerializeField] private Vector3 arcEndPoint;
     [SerializeField] public Vector3 offsetTangentPoint;
-    
+
 
 
 
@@ -117,11 +117,11 @@ public class Telekinesis : MonoBehaviour
             arcStartPoint = this.transform.position;
 
             offsetTangentPoint = transform.position + (transform.forward * Vector3.Distance(m_ActiveObject.transform.position, transform.position) / 2);
-    
+
             for (int i = 0; i < lightningArc.Length; i++)
             {
                 lightningArc[i].gameObject.SetActive(true);
-                 lightningArc[i].SetVector3(Shader.PropertyToID("Start"), arcStartPoint);
+                lightningArc[i].SetVector3(Shader.PropertyToID("Start"), arcStartPoint);
                 lightningArc[i].SetVector3(Shader.PropertyToID("Target"), arcEndPoint);
                 lightningArc[i].SetVector3(Shader.PropertyToID("TangentEnd"), offsetTangentPoint);
             }
@@ -165,9 +165,13 @@ public class Telekinesis : MonoBehaviour
             if (m_ActiveObject != null)
             {
                 lastActiveObject = m_ActiveObject.gameObject;
-
                 lightningMat = lastActiveObject.GetComponent<MeshRenderer>();
-                lightningMat.material.SetFloat(Shader.PropertyToID("Width"), 0.5f);
+
+                if (lightningMat != null)
+                {
+                    lightningMat.material.SetFloat(Shader.PropertyToID("Width"), 0.5f);
+
+                }
 
                 m_MagicBeamPoints[0] = transform.position;
                 m_MagicBeamPoints[1] = transform.position + (transform.forward * Vector3.Distance(m_ActiveObject.transform.position, transform.position) / 2);
