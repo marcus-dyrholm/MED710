@@ -9,6 +9,7 @@ TagManager:
   - RightShoulder
   - Vehicle
   - Concrete Pad
+  - WaterTower
   layers:
   - Default
   - TransparentFX
