@@ -8,8 +8,11 @@ public class WaterFill : MonoBehaviour
     public Animator anim;
     public float maxWeight = 10;
     private bool increaseWeight;
+    public float minWeight = 3;
     private float time;
     private Rigidbody rigidbody;
+    private bool decreaseWeight;
+    public GameObject waterSpout;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,17 @@ public class WaterFill : MonoBehaviour
                 increaseWeight = false;
             }
         }
+        else if(decreaseWeight == true)
+        {
+            time -= (Time.deltaTime / 2);
+            rigidbody.mass = time;
+
+            if(time <= minWeight)
+            {
+                decreaseWeight = false;
+                waterSpout.SetActive(false);
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -40,6 +54,16 @@ public class WaterFill : MonoBehaviour
         {
             anim.SetFloat("Speed",1);
             increaseWeight = true;
+            decreaseWeight = false;
+            waterSpout.SetActive(true);
         }
+    }
+
+    void OnTriggerExit()
+    {
+        decreaseWeight = true;
+        increaseWeight = false;
+        anim.SetFloat("Speed", -0.5f);
+        
     }
 }
