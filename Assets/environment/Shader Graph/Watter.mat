@@ -112,16 +112,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1048eb6055f94fe393892b58f8645001: 0.739
+    - Vector1_1048eb6055f94fe393892b58f8645001: 0.714
     - Vector1_2EE2CB80: 0.1
-    - Vector1_3c27c832dae34ec195034e92986e6307: 0.321
+    - Vector1_3c27c832dae34ec195034e92986e6307: 0.095
     - Vector1_49b5db692a0146d3b56da04f6cc28227: -330
-    - Vector1_4a4b5ea64daf4f60a0c0c7fb07ff983d: 1
+    - Vector1_4a4b5ea64daf4f60a0c0c7fb07ff983d: 0.907
     - Vector1_6ed225d939fa43d4b6471b82d21bc518: 0.1
     - Vector1_75da83fcd9094ca899c5dff16af66836: 50
     - Vector1_7f1bfb57bfb14808861b6ad60e7fe8ed: 0.2
     - Vector1_901306021c8049fd8a89f1120d87a30a: 1
-    - Vector1_a811b263e97b4b7cb4755a9965d60cb2: 0.76
+    - Vector1_a811b263e97b4b7cb4755a9965d60cb2: -6.35
     - Vector1_ad3c15e7723f482eabef2044717e3ce3: 3.3
     - Vector1_b14e75d5934c40d7b00dab80a1fb1438: 0
     - _BumpScale: 1
@@ -148,11 +148,12 @@ Material:
     - Color_23C9B10D: {r: 0.04561229, g: 0.14495295, b: 0.38679245, a: 0}
     - Color_A2AAE5B5: {r: 0.11372546, g: 0.62745106, b: 0.8352941, a: 0}
     - Color_c54337972c4e4cad968ce4ad3475f653: {r: 0.064615384, g: 0.15938473, b: 0.39200002, a: 0.7294118}
-    - Color_c54337972c4e4cad968ce4ad3475f653_1: {r: 0.93333334, g: 0.5411765, b: 0.21176471, a: 0.02745098}
+    - Color_c54337972c4e4cad968ce4ad3475f653_1: {r: 0, g: 0.78515863, b: 1, a: 0.02745098}
     - Color_c54337972c4e4cad968ce4ad3475f653_2: {r: 0.6778213, g: 0.7592113, b: 0.9622641, a: 0.54509807}
     - Color_c54337972c4e4cad968ce4ad3475f653_3: {r: 0, g: 0.6097107, b: 1, a: 0.29803923}
     - Vector2_761e13726e4e4196b4e87bc1e013392a: {r: 0.89, g: 0, b: 0, a: 0}
     - Vector2_C848BFFB: {r: 0.25, g: 0.25, b: 0, a: 0}
+    - Vector2_ca7062af86c44c5bb49eb9fea7b55990: {r: 100, g: 100, b: 0, a: 0}
     - WaveSpeed: {r: 19, g: 9, b: -16, a: -7}
     - _AnimationDirection: {r: 2.12, g: 1, b: 1, a: 1.61}
     - _AnimationTiling: {r: 3.02, g: 1.66, b: -1.07, a: -0.21}
