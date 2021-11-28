@@ -8,6 +8,7 @@ public class TutorialObjects : MonoBehaviour
     public Transform[] cubPos;
     public List<GameObject> cubes;
     private Rigidbody cubeRB;
+    float range1, range2;
     
     
     
@@ -38,11 +39,13 @@ public class TutorialObjects : MonoBehaviour
         }
         for (int i = 0; i < 3; i++)
         {
-            GameObject cube = Instantiate(cubePrefab, cubPos[i]);
+            GameObject cube = Instantiate(cubePrefab, cubPos[Random.Range(0,cubPos.Length)]);
+            cube.GetComponent<TutorialCube>().ID = i;
             cubes.Add(cube);
             cubeRB = cube.GetComponent<Rigidbody>();
             cubeRB.mass = Random.Range((float)i + 1.0f, (float)i + 2.0f);
         }
         
     }
+
 }

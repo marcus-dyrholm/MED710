@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3480741686361015829}
   - component: {fileID: 3007488231094418811}
   - component: {fileID: 6927358220567795814}
+  - component: {fileID: 5483422564693836594}
   m_Layer: 0
   m_Name: Tutorial cube
   m_TagString: Untagged
@@ -127,3 +128,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attachedTeleHand: {fileID: 0}
   _hapticStrength: 300
+--- !u!114 &5483422564693836594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381438588731736923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f4f59d1528cf54f891b470a2af6e3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
