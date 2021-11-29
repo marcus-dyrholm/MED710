@@ -38,23 +38,22 @@ public class EMSTestScript : MonoBehaviour
             time += Time.deltaTime;
             duration = 100;
 
-            if (time>= 0.025 )
-            {
-                if (time >= 0.025f && !channel1Sent)
+
+                if (time >= 0.050f && !channel1Sent)
                 {
-                    eMSScript1.sendMessage("C0I" + intensity + "T100G");
+                    eMSScript1.sendMessage("C0I" + intensity + "T200G");
                     channel1Sent = true;
-                    Debug.Log("C0I" + intensity + "T100G");
+                    //Debug.Log("C0I" + intensity + "T500G");
                 }
-                else if (time >= 0.05f)
+                else if (time >= + 0.10f)
                 {
-                    eMSScript1.sendMessage("C1I" + intensity + "T100G");
-                    Debug.Log("C1I" + intensity + "T100G");
+                    eMSScript1.sendMessage("C1I" + intensity + "T200G");
+                    //Debug.Log("C1I" + intensity + "T500G");
                     time = 0;
                     channel1Sent = false;
 
                 }
-            }
+            
         }
         else
         {
@@ -119,5 +118,20 @@ public class EMSTestScript : MonoBehaviour
         }
         
         
+    }
+
+    public void SendMessageToChannel(int EMSNum, int channel, int intensity, int duration)
+    {
+
+        if (EMSNum == 1)
+        {
+            eMSScript1.sendMessage("C" + channel + "I" + intensity + "T" + duration + "G");
+        }
+        else if (EMSNum == 2)
+        {
+            eMSScript2.sendMessage("C" + channel + "I" + intensity + "T" + duration + "G");
+        }
+
+
     }
 }
