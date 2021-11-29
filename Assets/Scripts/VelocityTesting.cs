@@ -27,6 +27,8 @@ public class VelocityTesting : MonoBehaviour
 
     private GameObject _player;
 
+    private static float time;
+
     public SteamVR_Action_Boolean setdistance; //Grab Pinch is the trigger, select from inspecter
     public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.Any;//which controller
 
@@ -56,6 +58,7 @@ public class VelocityTesting : MonoBehaviour
             if (telekinesis.m_fDistance >= 0 && distance < maxArmDistance && distance > minArmDistance)
             {
                 telekinesis.m_fDistance += map(localVelocity.z, -velocityRange, velocityRange, -velocityNewRange, velocityNewRange);
+                time = 0;
             }
 
             if (distance >= maxArmDistance)
@@ -66,9 +69,15 @@ public class VelocityTesting : MonoBehaviour
 
             if (distance <= minArmDistance && telekinesis.m_fDistance > 0)
             {
-                telekinesis.m_ActiveObject.transform.position = Vector3.SmoothDamp(telekinesis.m_ActiveObject.transform.position, _player.transform.position, ref velocity, 2);
+                telekinesis.m_fDistance -= distanceSpeed;
+                /*
+                time += 0.5f * Time.deltaTime;
+                float lerpSpeed = Mathf.Lerp(10,1,time);
+                Debug.Log(lerpSpeed);
+                telekinesis.m_ActiveObject.transform.position = Vector3.SmoothDamp(telekinesis.m_ActiveObject.transform.position, _player.transform.position, ref velocity, lerpSpeed);
                 telekinesis.m_fDistance = Vector3.Distance(telekinesis.m_ActiveObject.transform.position, _player.transform.position); 
                 float newSpeed = telekinesis.m_fDistance * distanceSpeed;
+                */
             }
 
             if (telekinesis.m_fDistance <= 0)

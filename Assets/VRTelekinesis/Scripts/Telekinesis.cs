@@ -75,6 +75,8 @@ public class Telekinesis : MonoBehaviour
 
     GameObject lastActiveObject;
 
+    public Vector3 rotation;
+
 
 
     void Start()
@@ -94,6 +96,7 @@ public class Telekinesis : MonoBehaviour
     public GameObject trackingObject;
     void Update()
     {
+        
 
 
 
@@ -101,6 +104,8 @@ public class Telekinesis : MonoBehaviour
         {
             transform.position = _teleHand.transform.position;
             transform.rotation = _teleHand.transform.rotation;
+            transform.Rotate(rotation);
+            
             // if (_handDevice == null)
             // {
             //     _handDevice = _teleHand.controller;

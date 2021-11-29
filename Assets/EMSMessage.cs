@@ -101,7 +101,9 @@ public class EMSMessage : MonoBehaviour
 
     }
 
-
+//   C1I50T1000G
+//   C1I20T1000G
+//   C1I100T1000G
 
     float map(float s, float a1, float a2, float b1, float b2)
     {

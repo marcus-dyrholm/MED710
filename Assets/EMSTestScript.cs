@@ -42,13 +42,13 @@ public class EMSTestScript : MonoBehaviour
             {
                 if (time >= 0.025f && !channel1Sent)
                 {
-                    //eMSScript1.sendMessage("C0I" + intensity + "T100G");
+                    eMSScript1.sendMessage("C0I" + intensity + "T100G");
                     channel1Sent = true;
                     Debug.Log("C0I" + intensity + "T100G");
                 }
                 else if (time >= 0.05f)
                 {
-                    //eMSScript1.sendMessage("C1I" + intensity + "T100G");
+                    eMSScript1.sendMessage("C1I" + intensity + "T100G");
                     Debug.Log("C1I" + intensity + "T100G");
                     time = 0;
                     channel1Sent = false;
@@ -97,8 +97,8 @@ public class EMSTestScript : MonoBehaviour
     {
         
         //for triceps testing
-        //eMSScript1.sendMessage("C0I" + intensity + "T" + duration + "G");
-        //eMSScript1.sendMessage("C1I" + intensity + "T" + duration + "G");
+        eMSScript1.sendMessage("C0I" + intensity + "T" + duration + "G");
+        eMSScript1.sendMessage("C1I" + intensity + "T" + duration + "G");
         Debug.Log("sentMessageToBoth");
     }
 
@@ -108,13 +108,13 @@ public class EMSTestScript : MonoBehaviour
         //for shoulder testing
         if (channel == 0)
         {
-            //eMSScript2.sendMessage("C0I" + intensity + "T" + duration + "G");
+            eMSScript2.sendMessage("C0I" + intensity + "T" + duration + "G");
             Debug.Log("C0I" + intensity + "T" + duration + "G");
         }
 
         if (channel == 1)
         {
-            //eMSScript2.sendMessage("C1I" + intensity + "T" + duration + "G");
+            eMSScript2.sendMessage("C1I" + intensity + "T" + duration + "G");
             Debug.Log("C1I" + intensity + "T" + duration + "G");
         }
         

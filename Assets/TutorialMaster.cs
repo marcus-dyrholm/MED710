@@ -13,23 +13,29 @@ public class TutorialMaster : MonoBehaviour
     public GameObject completedCanvas;
 
     public TutorialObjects tutorialObjects;
-    
+
     private float time;
 
-    public float timeCutoff = 5.0f; 
+    public float timeCutoff = 5.0f;
+
+    private bool objectiveComplete;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         if (CollisionCheckers[0].cubesIsColliding && CollisionCheckers[1].cubesIsColliding && CollisionCheckers[2].cubesIsColliding)
         {
-            
+            objectiveComplete = true;
+
+        }
+        if (objectiveComplete)
+        {
             time += Time.deltaTime;
             completedCanvas.SetActive(true);
             for (int i = 0; i < objectiveCanvasses.Length; i++)
@@ -47,6 +53,7 @@ public class TutorialMaster : MonoBehaviour
                 }
                 tutorialObjects.CreateCubes();
                 time = 0;
+                objectiveComplete = false;
             }
         }
     }

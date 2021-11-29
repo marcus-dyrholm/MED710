@@ -43,7 +43,7 @@ public class TutorialObjects : MonoBehaviour
             cube.GetComponent<TutorialCube>().ID = i;
             cubes.Add(cube);
             cubeRB = cube.GetComponent<Rigidbody>();
-            cubeRB.mass = Random.Range((float)i + 1.0f, (float)i + 2.0f);
+            cubeRB.mass = Random.Range((float)i + 1.5f, (float)i + 2.5f);
         }
         
     }
