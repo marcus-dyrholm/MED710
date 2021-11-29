@@ -10,6 +10,8 @@ TagManager:
   - Vehicle
   - Concrete Pad
   - WaterTower
+  - Fire
+  - Water
   layers:
   - Default
   - TransparentFX

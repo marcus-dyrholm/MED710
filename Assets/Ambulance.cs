@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,11 @@ public class Ambulance : MonoBehaviour
     public GameObject waypointContainer;
     public List<GameObject> waypoints;
     
-    int current;
+    public int current;
     float rotSpeed;
     public float speed;
     float WPradius = 1;
+    public bool isIntrigger = false;
 
  Vector3 currentAngle;
     // Start is called before the first frame update
@@ -39,5 +41,11 @@ public class Ambulance : MonoBehaviour
         var targetRotation = Quaternion.LookRotation(waypoints[current].transform.position - transform.position);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        speed = 0;
+        isIntrigger = true;
     }
 }

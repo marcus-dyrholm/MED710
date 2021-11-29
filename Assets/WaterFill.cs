@@ -13,6 +13,8 @@ public class WaterFill : MonoBehaviour
     private Rigidbody rigidbody;
     private bool decreaseWeight;
     public GameObject waterSpout;
+
+    public bool waterIsActive;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,7 @@ public class WaterFill : MonoBehaviour
             {
                 decreaseWeight = false;
                 waterSpout.SetActive(false);
+                waterIsActive = false;
             }
         }
     }
@@ -56,6 +59,7 @@ public class WaterFill : MonoBehaviour
             increaseWeight = true;
             decreaseWeight = false;
             waterSpout.SetActive(true);
+            waterIsActive = true;
         }
     }
 

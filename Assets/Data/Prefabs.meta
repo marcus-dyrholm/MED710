@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Data/Prefabs.meta
 guid: 158ec09b2cba5b54791ed3d172505691
 folderAsset: yes
 DefaultImporter:
+=======
+guid: 385917ad17c72364fba96b5e0870ed40
+PrefabImporter:
+>>>>>>> 60e118a9b9bc22182cf3b7f063b355d5edadff95:Assets/Scenes/Ambulance.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
