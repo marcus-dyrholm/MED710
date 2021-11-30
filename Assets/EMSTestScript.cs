@@ -16,12 +16,14 @@ public class EMSTestScript : MonoBehaviour
     public int savedDuration;
     public Text intensityText;
 
-    private float intensity;
+    private int intensity;
 
     public int channel;
 
     public bool toggle;
     public bool toggleSingle;
+
+    private Button button;
 
     private float time;
     private bool channel1Sent;
@@ -29,6 +31,7 @@ public class EMSTestScript : MonoBehaviour
     private void Start()
     {
         savedDuration = duration;
+        button = this.GetComponent<Button>();
     }
 
     void FixedUpdate()
@@ -64,7 +67,7 @@ public class EMSTestScript : MonoBehaviour
         {
             duration = 100;
             time += Time.deltaTime;
-            if (time>= 0.25f)
+            if (time>= 0.025f)
             {
                 sendMessageToChannel();
                 time = 0;
@@ -75,6 +78,9 @@ public class EMSTestScript : MonoBehaviour
         {
             duration = savedDuration;
         }
+        
+        
+        button.onClick.AddListener(delegate { SendMessageToBoth(1,intensity,duration); });
     }
 
     public void ToggleBool(bool isOn)
@@ -92,14 +98,14 @@ public class EMSTestScript : MonoBehaviour
         intensity = Mathf.RoundToInt(intens * 100);
         intensityText.text = "Intensity = " + intensity;
     }
-    public void sendMessageToBoth()
+    /*public void sendMessageToBoth()
     {
         
         //for triceps testing
         eMSScript1.sendMessage("C0I" + intensity + "T" + duration + "G");
         eMSScript1.sendMessage("C1I" + intensity + "T" + duration + "G");
         Debug.Log("sentMessageToBoth");
-    }
+    }*/
 
     public void sendMessageToChannel()
     {
@@ -107,30 +113,44 @@ public class EMSTestScript : MonoBehaviour
         //for shoulder testing
         if (channel == 0)
         {
-            eMSScript2.sendMessage("C0I" + intensity + "T" + duration + "G");
+            eMSScript1.sendMessage("C0I" + intensity + "T100G");
             Debug.Log("C0I" + intensity + "T" + duration + "G");
         }
 
         if (channel == 1)
         {
-            eMSScript2.sendMessage("C1I" + intensity + "T" + duration + "G");
+            eMSScript1.sendMessage("C1I" + intensity + "T100G");
             Debug.Log("C1I" + intensity + "T" + duration + "G");
         }
         
         
     }
 
-    public void SendMessageToChannel(int EMSNum, int channel, int intensity, int duration)
+    public void SendMessageToBoth(int EMSNum, int intensity, int duration)
     {
+        float time = 0;
+        time += Time.deltaTime;
+        bool channel1sent = false;
+        
+        
+        if (time >= 0.050f && !channel1sent)
+        {
+            eMSScript1.sendMessage("C0I" + intensity + "T2000G");
+            channel1Sent = true;
+            //Debug.Log("C0I" + intensity + "T500G");
+        }
+        else if (time >= + 0.10f)
+        {
+            eMSScript1.sendMessage("C1I" + intensity + "T2000G");
+            //Debug.Log("C1I" + intensity + "T500G");
+            time = 0;
+            channel1sent = false;
 
-        if (EMSNum == 1)
-        {
-            eMSScript1.sendMessage("C" + channel + "I" + intensity + "T" + duration + "G");
         }
-        else if (EMSNum == 2)
-        {
-            eMSScript2.sendMessage("C" + channel + "I" + intensity + "T" + duration + "G");
-        }
+            
+        
+
+        
 
 
     }
