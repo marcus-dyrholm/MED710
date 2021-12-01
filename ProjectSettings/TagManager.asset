@@ -12,6 +12,7 @@ TagManager:
   - WaterTower
   - Fire
   - Water
+  - Ambulance
   layers:
   - Default
   - TransparentFX

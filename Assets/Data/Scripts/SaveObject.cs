@@ -6,13 +6,18 @@ using UnityEngine;
 [System.Serializable]
 public class SaveObject : MonoBehaviour
 {
-        //Game Experience Questionnaire – Core Module
+    //Name of Person
+    public string Name;
+    //date
+    public string date;
+    
+        //Game Experience Questionnaire ï¿½ Core Module
         public float ExperienceScore;
         //In-game GEQ 
         public float InGameScore;
         //GEQ - Social Presence Module 
         public float SocialPresenceScore;
-        //GEQ – post-game module
+        //GEQ ï¿½ post-game module
         public float PostGameScore;
 
     //Scoring guidelines GEQ Core Module
