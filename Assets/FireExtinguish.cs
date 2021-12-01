@@ -13,7 +13,7 @@ public class FireExtinguish : MonoBehaviour
     {
         if (decreaseFire)
         {
-            time -= (Time.deltaTime * 3);
+            time -= (Time.deltaTime * 6);
             transform.localScale = new Vector3(time,time,time);
             if (time <= 1)
             {
