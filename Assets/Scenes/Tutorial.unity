@@ -2213,11 +2213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 389725893081806653, guid: 26fc9d3d6eb05a043bee50df7c626f88, type: 3}
       propertyPath: portName
-      value: COM11
+      value: COM10
       objectReference: {fileID: 0}
     - target: {fileID: 389725893822699301, guid: 26fc9d3d6eb05a043bee50df7c626f88, type: 3}
       propertyPath: portName
-      value: COM10
+      value: COM11
       objectReference: {fileID: 0}
     - target: {fileID: 389725894118944183, guid: 26fc9d3d6eb05a043bee50df7c626f88, type: 3}
       propertyPath: m_Name

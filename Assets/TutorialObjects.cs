@@ -9,6 +9,8 @@ public class TutorialObjects : MonoBehaviour
     public List<GameObject> cubes;
     private Rigidbody cubeRB;
     float range1, range2;
+
+    public int times=6;
     
     
     
@@ -30,6 +32,7 @@ public class TutorialObjects : MonoBehaviour
 
     public void CreateCubes()
     {
+        times--;
         if (cubes.Count > 0)
         {
             for (int i = 0; i < cubes.Count; i++)
@@ -43,7 +46,7 @@ public class TutorialObjects : MonoBehaviour
             cube.GetComponent<TutorialCube>().ID = i;
             cubes.Add(cube);
             cubeRB = cube.GetComponent<Rigidbody>();
-            cubeRB.mass = Random.Range((float)i + 1.5f, (float)i + 2.5f);
+            cubeRB.mass = (i+1) * (times/1.5f);//Random.Range((float)i + 1.5f, (float)i + 2.5f);
         }
         
     }

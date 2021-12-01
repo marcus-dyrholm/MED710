@@ -35,8 +35,8 @@ public class VelocityTesting : MonoBehaviour
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("RightShoulder");
-        maxArmDistance = PlayerPrefs.GetFloat("MaxArmDistance");
-        minArmDistance = PlayerPrefs.GetFloat("MinArmDistance");
+        //maxArmDistance = PlayerPrefs.GetFloat("MaxArmDistance");
+        //minArmDistance = PlayerPrefs.GetFloat("MinArmDistance");
 
     }
 
@@ -112,7 +112,7 @@ public class VelocityTesting : MonoBehaviour
         maxArmDistance = Vector3.Distance(this.transform.position, _player.transform.position);
         maxArmDistance -= distanceScalar;
         Debug.Log("max arm distance = " + maxArmDistance);
-        PlayerPrefs.SetFloat("MaxArmDistance", maxArmDistance);
+        //PlayerPrefs.SetFloat("MaxArmDistance", maxArmDistance);
     }
 
     private void distanceCloseSet()
@@ -120,7 +120,7 @@ public class VelocityTesting : MonoBehaviour
         minArmDistance = Vector3.Distance(this.transform.position, _player.transform.position);
         minArmDistance += distanceScalar;
         Debug.Log("min arm distance = " + minArmDistance);
-        PlayerPrefs.SetFloat("MinArmDistance", minArmDistance);
+        //PlayerPrefs.SetFloat("MinArmDistance", minArmDistance);
     }
 
     float map(float s, float a1, float a2, float b1, float b2)
