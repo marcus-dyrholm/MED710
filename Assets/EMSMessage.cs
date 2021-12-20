@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EMSMessage : MonoBehaviour
 {
-
-
     public EMSScript EMSScript;
     public EMSScript2 EMSScript2;
 
@@ -14,31 +12,24 @@ public class EMSMessage : MonoBehaviour
     private string message_to_stimulate_this_player;
 
     float time1;
-    float timeOut = 0.050f;
-
     float time2;
-
+    float timeOut = 0.050f;
+    
+    //Make sure that messages are only sent once per timeout
     bool channel1Sent, channel2Sent = false;
+    
 
-    int num = 50;
-
-
-
-
-    void Start()
+    
+    
+    float map(float s, float a1, float a2, float b1, float b2)
     {
-        message_to_stimulate_this_player = command_to_stimulate_this_player;
+        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
-
-    public void message()
-    {
-
-        EMSScript.sendMessage(message_to_stimulate_this_player);
-
-    }
-
+    
     void FixedUpdate()
     {
+        
+        //Timings to ensure that the serial port doesnt get flooded.
         time1 += Time.deltaTime;
         time2 += Time.deltaTime;
         if (telekinesisRight.m_ActiveObject != null)
@@ -52,8 +43,6 @@ public class EMSMessage : MonoBehaviour
             int clampedIntensityX = Mathf.Clamp(intensityX, -100, 100);
 
             
-
-
             if (time1 >= 0.025f && !channel1Sent)
             {
                 EMSScript.sendMessage("C0I" + clampedIntensity + "T100G");
@@ -64,51 +53,29 @@ public class EMSMessage : MonoBehaviour
                 EMSScript.sendMessage("C1I" + clampedIntensity + "T100G");
                 time1 = 0;
                 channel1Sent = false;
-
             }
 
             if (time2 >= timeOut)
             {
-                if (intensityX >= 20)
+                if (intensityX >= 10)
                 {
-
                     EMSScript2.sendMessage("C0I" + clampedIntensityX + "T100G");
                     time2 = 0;
                 }
                 else if (intensityX <= -10)
                 {
-
                     EMSScript2.sendMessage("C1I" + Mathf.Abs(clampedIntensityX) + "T100G");
                     time2 = 0;
                 }
 
                 time2 = 0;
             }
-
-
-            /*   if (intensityX > 10)
-              {
-                  Debug.Log("Right");
-              }
-              else if (intensityX < -10)
-              {
-                  Debug.Log("Left");
-              } */
-
-
         }
-
-
     }
 
-//   C1I50T1000G
-//   C1I20T1000G
-//   C1I100T1000G
 
-    float map(float s, float a1, float a2, float b1, float b2)
-    {
-        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
-    }
+
+
 
 
 

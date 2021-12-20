@@ -30,7 +30,6 @@ public class EMSScript : MonoBehaviour
         EMSScript.port.DataBits = 8;
         EMSScript.port.StopBits = StopBits.Two;
         EMSScript.port.Open();
-        //print("Opening Serial Port: " + PortName);
     }
     
     protected void close()
@@ -39,7 +38,6 @@ public class EMSScript : MonoBehaviour
         {
             EMSScript.port.Close();
             EMSScript.port.Dispose();
-            //print("Closed Serial Port " + RehaStimInterface.Port.PortName);
             EMSScript.port = null;
         }
     }
@@ -52,23 +50,7 @@ public class EMSScript : MonoBehaviour
             return false;
         }
         sp.Write(message);
-        //print(System.BitConverter.ToString(message));
         Debug.Log("Com port" + EMSScript.port.PortName + "Message to EMS: " + message);
         return true;
     }
-
-    public void message(string message)
-    {
-        float time = Time.deltaTime;
-        float timeOut = 0.05f;
-
-        if(time >= timeOut)
-        {
-            sendMessage(message);
-        }
-
-
-        
-    }
-
 }

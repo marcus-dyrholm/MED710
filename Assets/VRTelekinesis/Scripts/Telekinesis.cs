@@ -115,12 +115,11 @@ public class Telekinesis : MonoBehaviour
 
         if (_telekinesisActive == true)
         {
-            //EMS.sendMessage("C0I50T100G");
-
+            // P2
             arcEndPoint = m_ActiveObject.transform.position;
-
+            // P0
             arcStartPoint = this.transform.position;
-
+            // P1
             offsetTangentPoint = transform.position + (transform.forward * Vector3.Distance(m_ActiveObject.transform.position, transform.position) / 2);
 
             for (int i = 0; i < lightningArc.Length; i++)
